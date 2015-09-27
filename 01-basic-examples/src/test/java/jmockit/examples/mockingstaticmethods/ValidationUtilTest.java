@@ -3,6 +3,7 @@ package jmockit.examples.mockingstaticmethods;
 import jmockit.examples.basicwithoutmocking.CommonUtil;
 import mockit.Mock;
 import mockit.MockUp;
+import mockit.NonStrictExpectations;
 
 import org.testng.annotations.Test;
 
@@ -31,14 +32,15 @@ public class ValidationUtilTest {
 	public void testValidateShouldNotBeEmpty_NoException_WhenIsNullReturnsFalse() {
 		/*
 		 * Mocking Static method CommonUtil.isNull(Object o); to return false for this test case
+		 * 
+		 * Note: We are mocking it using a different approach
+		 * 			using new NonStrictExpectations(CommonUtil.class) {{ }} instead of 
+		 * 			instead of new MockUp<CommonUtil>(){ }
 		 */
-		new MockUp<CommonUtil>() {
-			// Optional "invocations = 1" parameter to @Mock: Specifies the number of invocations expected
-			@Mock(invocations = 1)
-			boolean isNull(Object o) {
-				return false;
-			}
-		};
+		new NonStrictExpectations(CommonUtil.class) {{
+			// Optional "times = 1": Specifies the number of invocations expected
+			CommonUtil.isNull(any); result = false; times = 1;
+		}};
 
 		/*
 		 * Actual method under test
