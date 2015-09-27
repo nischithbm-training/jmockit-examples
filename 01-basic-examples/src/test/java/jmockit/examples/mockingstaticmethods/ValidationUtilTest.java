@@ -14,11 +14,12 @@ public class ValidationUtilTest {
 		 * Mocking Static method CommonUtil.isNull(Object o); to return true for this test case
 		 */
 		new MockUp<CommonUtil>() {
-	        @Mock(invocations = 1)	// Optional: You can specify the number of invocations expected
-	        boolean isNull(Object o) {
-	        	return true;
-	        }
-	    };
+			// Optional "invocations = 1" parameter to @Mock: Specifies the number of invocations expected
+			@Mock(invocations = 1)
+			boolean isNull(Object o) {
+				return true;
+			}
+		};
 	    
 	    /*
 	     * Actual method under test
@@ -32,11 +33,12 @@ public class ValidationUtilTest {
 		 * Mocking Static method CommonUtil.isNull(Object o); to return false for this test case
 		 */
 		new MockUp<CommonUtil>() {
-	        @Mock(invocations = 1)	// Optional: You can specify the number of invocations expected 
-	        boolean isNull(Object o) {
-	        	return false;
-	        }
-	    };
+			// Optional "invocations = 1" parameter to @Mock: Specifies the number of invocations expected
+			@Mock(invocations = 1)
+			boolean isNull(Object o) {
+				return false;
+			}
+		};
 	    
 		/*
 	     * Actual method under test
@@ -51,11 +53,12 @@ public class ValidationUtilTest {
 		 * Mocking Static method CommonUtil.isStringEmptyOrNull(String str); to return true for this test case
 		 */
 		new MockUp<CommonUtil>() {
-	        @Mock(invocations = 1)	// Optional: You can specify the number of invocations expected
-	        boolean isStringEmptyOrNull(String str) {
-	        	return true;
-	        }
-	    };
+			// Optional "invocations = 1" parameter to @Mock: Specifies the number of invocations expected
+			@Mock(invocations = 1)
+			boolean isStringEmptyOrNull(String str) {
+				return true;
+			}
+		};
 	    
 	    /*
 	     * Actual method under test
@@ -69,11 +72,12 @@ public class ValidationUtilTest {
 		 * Mocking Static method CommonUtil.isStringEmptyOrNull(String str); to return false for this test case
 		 */
 		new MockUp<CommonUtil>() {
-	        @Mock(invocations = 1)	// Optional: You can specify the number of invocations expected
-	        boolean isStringEmptyOrNull(String str) {
-	        	return false;
-	        }
-	    };
+			// Optional "invocations = 1" parameter to @Mock: Specifies the number of invocations expected
+			@Mock(invocations = 1)
+			boolean isStringEmptyOrNull(String str) {
+				return false;
+			}
+		};
 	    
 	    /*
 	     * Actual method under test
