@@ -20,11 +20,11 @@ public class ValidationUtilTest {
 				return true;
 			}
 		};
-	    
-	    /*
-	     * Actual method under test
-	     */
-	    ValidationUtil.validateShouldNotBeEmpty(null, "TestString");
+
+		/*
+		 * Actual method under test
+		 */
+		ValidationUtil.validateShouldNotBeEmpty(null, "TestString");
 	}
 
 	@Test
@@ -39,14 +39,13 @@ public class ValidationUtilTest {
 				return false;
 			}
 		};
-	    
+
 		/*
-	     * Actual method under test
-	     */
+		 * Actual method under test
+		 */
 		ValidationUtil.validateShouldNotBeEmpty("test string", "TestString");
 	}
-	
-	
+
 	@Test(expectedExceptions = { IllegalArgumentException.class })
 	public void testValidateStringShouldNotBeEmpty_ExpectIllegalArgumentException_WhenIsStringEmptyOrNullReturnsTrue() {
 		/*
@@ -59,11 +58,11 @@ public class ValidationUtilTest {
 				return true;
 			}
 		};
-	    
-	    /*
-	     * Actual method under test
-	     */
-	    ValidationUtil.validateStringShouldNotBeEmpty(null, "TestString");
+
+		/*
+		 * Actual method under test
+		 */
+		ValidationUtil.validateStringShouldNotBeEmpty(null, "TestString");
 	}
 
 	@Test
@@ -78,10 +77,10 @@ public class ValidationUtilTest {
 				return false;
 			}
 		};
-	    
-	    /*
-	     * Actual method under test
-	     */
-	    ValidationUtil.validateStringShouldNotBeEmpty("test string", "TestString");
+
+		/*
+		 * Actual method under test
+		 */
+		ValidationUtil.validateStringShouldNotBeEmpty("test string", "TestString");
 	}
 }
