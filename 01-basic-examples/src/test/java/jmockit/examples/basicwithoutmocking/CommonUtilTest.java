@@ -1,18 +1,25 @@
 package jmockit.examples.basicwithoutmocking;
 
-import jmockit.examples.basicwithoutmocking.CommonUtil;
-
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class CommonUtilTest {
 
-	@Test
-	public void testIsNull() {
-		Assert.assertTrue(CommonUtil.isNull(null));
-		Assert.assertFalse(CommonUtil.isNull("someRandomString"));
-		Assert.assertFalse(CommonUtil.isNull(new Long(10)));
+	@Test(dataProvider = "dpIsNull")
+	public void testIsNull(Object input, boolean expectedResult) {
+		boolean result = CommonUtil.isNull(input);
+		Assert.assertEquals(result, expectedResult);
+	}
+
+	@DataProvider
+	public Object[][] dpIsNull() {
+		return new Object[][]{
+			new Object[] {null, true},
+			new Object[] {"", false},
+			new Object[] {"someRandomString", false},
+			new Object[] {new Long(10), false}
+		};
 	}
 
 	@Test(dataProvider = "dpIsStringEmptyOrNull_AssertTrue")
@@ -24,8 +31,7 @@ public class CommonUtilTest {
 	public void testIsStringEmptyOrNull_AssertFalse(String str) {
 		Assert.assertFalse(CommonUtil.isNull(str));
 	}
-	
-	
+
 	/*
 	 * Data Providers
 	 */

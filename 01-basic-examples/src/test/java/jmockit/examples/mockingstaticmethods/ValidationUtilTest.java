@@ -69,20 +69,17 @@ public class ValidationUtilTest {
 
 	@Test
 	public void testValidateStringShouldNotBeEmpty_NoException_WhenIsStringEmptyOrNullReturnsFalse() {
+		final String inputStr = "test string";
 		/*
 		 * Mocking Static method CommonUtil.isStringEmptyOrNull(String str); to return false for this test case
 		 */
-		new MockUp<CommonUtil>() {
-			// Optional "invocations = 1" parameter to @Mock: Specifies the number of invocations expected
-			@Mock(invocations = 1)
-			boolean isStringEmptyOrNull(String str) {
-				return false;
-			}
-		};
+		new NonStrictExpectations(CommonUtil.class) {{
+			CommonUtil.isStringEmptyOrNull(inputStr); result = false; times = 1;
+		}};
 
 		/*
 		 * Actual method under test
 		 */
-		ValidationUtil.validateStringShouldNotBeEmpty("test string", "TestString");
+		ValidationUtil.validateStringShouldNotBeEmpty(inputStr, "TestString");
 	}
 }
